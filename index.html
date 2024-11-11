@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="https://www.example.com/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Website | Home</title>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Basic Styling for the Header and Layout -->
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            overflow-x: hidden;
+        }
+
+        /* Header styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #333;
+            color: #fff;
+            border-bottom: 2px solid #444;
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 50px;
+        }
+
+        /* Navigation styling */
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffa500;
+        }
+
+        /* Hamburger menu styling */
+        .bar {
+            font-size: 24px;
+            cursor: pointer;
+            display: none; /* Hidden by default, shown on small screens */
+        }
+
+        /* Collapsible mobile menu */
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links.active {
+            display: block;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        /* Section styling with background images */
+        .main-content {
+            padding: 60px 20px;
+            text-align: center;
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .main-content h1, .main-content h2 {
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+            color: #f9f9f9;
+        }
+
+        /* Adding different background images for each section */
+        #home {
+            background-image: url('backgroundimage.jpeg');
+        }
+
+        #menu {
+            background-image: url('');
+        }
+
+        #about {
+            background-image: url('');
+        }
+
+        #contact {
+            background-image: url('');
+        }
+
+        /* Overlay to darken the background for better text contrast */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .main-content .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Hide nav links on small screens */
+            }
+
+            .bar {
+                display: inline-block; /* Show hamburger icon on small screens */
+            }
+
+            .nav-links {
+                display: none; /* Hidden initially for mobile */
+                width: 100%;
+            }
+
+            .main-content h1, .main-content h2 {
+                font-size: 2em;
+            }
+
+            .main-content p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="OIP.jpeg" alt="Restaurant Logo">
+        </div>
+        <div class="bar" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+            <i class="fa fa-times" style="display: none;"></i>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section with Overlays -->
+    <section id="home" class="main-content">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Welcome to Our Restaurant</h1>
+            <p>Experience the best cuisine and atmosphere in town. Explore our menu, learn about us, and contact us for reservations.</p>
+        </div>
+    </section>
+
+    <section id="menu" class="main-content">
+        <div class="overlay"></div>
+        <div class="content">
+            <h2>Our Menu</h2>
+            <p>Discover a variety of dishes made from the freshest ingredients.</p>
+            <a href="/menu.html" style="color: #ffa500; text-decoration: underline;">View Full Menu</a>
+        </div>
+    </section>
+
+    <section id="about" class="main-content">
+        <div class="overlay"></div>
+        <div class="content">
+            <h2>About Us</h2>
+            <p>We are passionate about providing the best dining experience for our customers.</p>
+            <a href="/About us.html" style="color: #ffa500; text-decoration: underline;">Learn More About Us</a>
+        </div>
+    </section>
+
+    <section id="contact" class="main-content">
+        <div class="overlay"></div>
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>Get in touch for reservations and inquiries.</p>
+            <a href="/Contact Us.html" style="color: #ffa500; text-decoration: underline;">Contact Details</a>
+        </div>
+    </section>
+
+    <!-- JavaScript for Toggle Menu -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const barIcon = document.querySelector('.bar i.fa-bars');
+            const closeIcon = document.querySelector('.bar i.fa-times');
+
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                barIcon.style.display = 'none';
+                closeIcon.style.display = 'inline';
+            } else {
+                barIcon.style.display = 'inline';
+                closeIcon.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
