@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Healthy Food</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        h1 {
+            color: #27ae60;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 28px;
+        }
+
+        #order-summary {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #order-summary p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        #total-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #2ecc71;
+        }
+
+        .summary-item {
+            margin-bottom: 15px;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: #34495e;
+        }
+
+        .item-price {
+            font-size: 18px;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* Adding a footer for a polished look */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Healthy Food - Payment Details
+</header>
+
+<h1>Your Order Summary</h1>
+
+<div id="order-summary">
+    <!-- Order summary will be dynamically inserted here -->
+</div>
+
+<div id="total-price">
+    <!-- Total price will be dynamically inserted here -->
+</div>
+
+<button id="proceed-button">Proceed to Payment</button>
+
+<footer>
+    <p>Thank you for choosing Healthy Food! Enjoy your meal.</p>
+</footer>
+
+<script>
+    // Function to get URL query parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const total = params.get('total');
+        const items = {};
+
+        for (let [key, value] of params.entries()) {
+            if (key !== 'total') {
+                items[key] = value;
+            }
+        }
+
+        return { total, items };
+    }
+
+    // Display order details
+    const { total, items } = getQueryParams();
+    let orderSummary = '';
+    for (const [name, price] of Object.entries(items)) {
+        orderSummary += `
+            <div class="summary-item">
+                <span class="item-name">${name}</span>
+                <span class="item-price">$${parseFloat(price).toFixed(2)}</span>
+            </div>
+        `;
+    }
+
+    document.getElementById('order-summary').innerHTML = orderSummary;
+    document.getElementById('total-price').innerHTML = `Total: $${parseFloat(total).toFixed(2)}`;
+
+    // Handle button click to navigate to paymethod.html
+    document.getElementById('proceed-button').addEventListener('click', function() {
+        const queryString = new URLSearchParams({ total, ...items }).toString();
+        window.location.href = `paymethod.html?${queryString}`;
+    });
+</script>
+
+</body>
+</html>

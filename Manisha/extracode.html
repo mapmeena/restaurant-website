@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Healthy Food</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://th.bing.com/th?id=OIP.64vdVCN6KYVutR1pmeC_PAHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.6&pid=3.1&rm=2') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff; /* White text color for readability */
+            position: relative;
+        }
+
+        /* Overlay to darken the background image */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Darker overlay for better contrast */
+            z-index: -1;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7); /* Dark background for header */
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            margin: 0;
+            font-family: 'Cursive', sans-serif;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12; /* Gold color for hover effect */
+            text-decoration: underline;
+        }
+
+        .menu-container {
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .sidebar {
+            background: rgba(0, 0, 0, 0.7);
+            width: 220px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            font-size: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #fff;
+            transition: color 0.3s ease;
+            padding: 10px 0;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .sidebar ul li:hover {
+            color: #f39c12;
+            background-color: #34495e;
+        }
+
+        .menu-content {
+            flex-grow: 1;
+            padding-left: 20px;
+            flex-basis: 50%;
+            margin-bottom: 20px;
+        }
+
+        .menu-category {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-category h2 {
+            font-size: 28px;
+            color: #f39c12; /* Gold for headings */
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .menu-category ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu-category ul li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #2c3e50;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .menu-category ul li:hover {
+            background: #f39c12;
+            color: white;
+        }
+
+        .menu-category ul li .price {
+            color: #e74c3c; /* Red for prices */
+            font-weight: bold;
+        }
+
+        .order-now {
+            background-color: #f39c12;
+            color: white;
+            font-size: 22px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .order-now:hover {
+            background-color: #e67e22; /* Darker orange on hover */
+        }
+
+        .total {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #f39c12; /* Gold color for the total */
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #34495e;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .order-details {
+            margin-top: 30px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .menu-container {
+                flex-direction: column;
+            }
+
+            .menu-content {
+                flex-basis: 100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <header>
+        <div class="logo">
+            <img src="OIP.jpeg" alt="Restaurant Logo">
+            <h1>Healthy Food</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="menu-container">
+        <aside class="sidebar">
+            <ul>
+                <li onclick="filterMenu('Salads')">Salads</li>
+                <li onclick="filterMenu('Main Dishes')">Main Dishes</li>
+                <li onclick="filterMenu('Drinks')">Drinks</li>
+            </ul>
+        </aside>
+
+        <div class="menu-content">
+            <div id="Salads" class="menu-category">
+                <h2>Salads</h2>
+                <ul>
+                    <li><span>Soja Cesar</span><span class="price">$10.00</span><button onclick="addToCart('Soja Cesar', 10)">Add</button></li>
+                    <li><span>Garden Deluxe</span><span class="price">$13.00</span><button onclick="addToCart('Garden Deluxe', 13)">Add</button></li>
+                    <li><span>Jamie’s Salad</span><span class="price">$6.00</span><button onclick="addToCart('Jamie’s Salad', 6)">Add</button></li>
+                </ul>
+            </div>
+            <div id="Main Dishes" class="menu-category">
+                <h2>Main Dishes</h2>
+                <ul>
+                    <li><span>Hummus</span><span class="price">$8.00</span><button onclick="addToCart('Hummus', 8)">Add</button></li>
+                    <li><span>Quinoa Wrap</span><span class="price">$15.00</span><button onclick="addToCart('Quinoa Wrap', 15)">Add</button></li>
+                    <li><span>Tofu</span><span class="price">$20.00</span><button onclick="addToCart('Tofu', 20)">Add</button></li>
+                </ul>
+            </div>
+            <div id="Drinks" class="menu-category">
+                <h2>Drinks</h2>
+                <ul>
+                    <li><span>Fresh Juice</span><span class="price">$5.00</span><button onclick="addToCart('Fresh Juice', 5)">Add</button></li>
+                    <li><span>Vegan Smoothie</span><span class="price">$7.00</span><button onclick="addToCart('Vegan Smoothie', 7)">Add</button></li>
+                    <li><span>Organic Coffee</span><span class="price">$4.00</span><button onclick="addToCart('Organic Coffee', 4)">Add</button></li>
+                </ul>
+            </div>
+            <button class="order-now">Order Now</button>
+        </div>
+    </section>
+
+    <script>
+        function filterMenu(category) {
+            const categories = document.querySelectorAll('.menu-category');
+            categories.forEach(cat => {
+                cat.style.display = cat.id === category ? 'block' : 'none';
+            });
+        }
+
+        function addToCart(item, price) {
+            alert(item + ' has been added to your cart for $' + price);
+        }
+    </script>
+</body>
+</html>

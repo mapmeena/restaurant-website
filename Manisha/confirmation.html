@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation | Healthy Food</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        h1 {
+            color: #27ae60;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 28px;
+        }
+
+        .confirmation-message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Healthy Food - Payment Confirmation
+</header>
+
+<h1>Payment Done</h1>
+
+<div class="confirmation-message">
+    <p>Thank you for your purchase!</p>
+    <p>Your payment method was: <strong id="payment-method"></strong></p>
+    <p>Your order is being processed and will be delivered soon.</p>
+</div>
+
+<footer>
+    <p>Thank you for choosing Healthy Food! Enjoy your meal.</p>
+</footer>
+
+<script>
+    // Function to get URL query parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('paymentMethod');
+    }
+
+    // Display the selected payment method
+    const paymentMethod = getQueryParams();
+    document.getElementById('payment-method').textContent = paymentMethod;
+</script>
+
+</body>
+</html>

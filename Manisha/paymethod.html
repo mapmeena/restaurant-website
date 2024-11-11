@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Methods | Healthy Food</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        h1 {
+            color: #27ae60;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 28px;
+        }
+        #order-summary {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .payment-option {
+            background-color: #fff;
+            padding: 15px;
+            border: 2px solid #27ae60;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+            margin: 10px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .payment-option:hover {
+            background-color: #2ecc71;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Healthy Food - Payment Methods
+</header>
+
+<h1>Select Your Payment Method</h1>
+
+<div id="order-summary">
+    <!-- Order summary will be dynamically inserted here -->
+</div>
+
+<div class="payment-options">
+    <div class="payment-option" id="credit-card">
+        <p>Credit Card</p>
+    </div>
+    <div class="payment-option" id="paypal">
+        <p>PayPal</p>
+    </div>
+    <div class="payment-option" id="cash">
+        <p>Cash on Delivery</p>
+    </div>
+</div>
+
+<button id="proceed-button">Proceed to Confirm</button>
+
+<script>
+    // Function to get URL query parameters
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const total = params.get('total');
+        const items = {};
+
+        for (let [key, value] of params.entries()) {
+            if (key !== 'total') {
+                items[key] = value;
+            }
+        }
+
+        return { total, items };
+    }
+
+    // Display order details
+    const { total, items } = getQueryParams();
+    let orderSummary = 'Items:<br>';
+    for (const [name, price] of Object.entries(items)) {
+        orderSummary += `${name}: $${parseFloat(price).toFixed(2)}<br>`;
+    }
+    orderSummary += `<strong>Total: $${parseFloat(total).toFixed(2)}</strong>`;
+
+    document.getElementById('order-summary').innerHTML = orderSummary;
+
+    // Handle Payment Method Selection
+    let selectedPaymentMethod = '';
+
+    function highlightSelectedMethod(methodId) {
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.style.backgroundColor = 'white';
+        });
+
+        document.getElementById(methodId).style.backgroundColor = '#2ecc71';
+    }
+
+    document.getElementById('credit-card').addEventListener('click', function() {
+        selectedPaymentMethod = 'Credit Card';
+        highlightSelectedMethod('credit-card');
+    });
+
+    document.getElementById('paypal').addEventListener('click', function() {
+        selectedPaymentMethod = 'PayPal';
+        highlightSelectedMethod('paypal');
+    });
+
+    document.getElementById('cash').addEventListener('click', function() {
+        selectedPaymentMethod = 'Cash on Delivery';
+        highlightSelectedMethod('cash');
+    });
+
+    // Handle proceed button click
+    document.getElementById('proceed-button').addEventListener('click', function() {
+        if (selectedPaymentMethod) {
+            // Redirect to the confirmation page with the payment method
+            window.location.href = `confirmation.html?paymentMethod=${selectedPaymentMethod}`;
+        } else {
+            alert('Please select a payment method');
+        }
+    });
+</script>
+
+</body>
+</html>

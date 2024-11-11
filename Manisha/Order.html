@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Healthy Food</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        header .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3, h1 {
+            color: #2c3e50;
+        }
+        p, label {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+        .menu-category {
+            margin-bottom: 30px;
+        }
+        .menu-category h2 {
+            color: #34495e;
+        }
+        .menu-category ul {
+            list-style: none;
+            padding: 0;
+        }
+        .menu-category li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .menu-category img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .price {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2ecc71;
+        }
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="OIP.jpeg" alt="Restaurant Logo">
+        <h1>Healthy Food - Checkout</h1>
+    </div>
+</header>
+
+<section>
+    <h2>Select Your Items</h2>
+    <div class="menu" id="menu">
+        <!-- Starters Category -->
+        <div class="menu-category" id="Starters">
+            <h2>Starters</h2>
+            <ul>
+                <li>
+                    <span>Soja Cesar</span>
+                    <span class="price">$10.00</span>
+                    <img src="Caesar-Salad.jpg" alt="Soja Cesar">
+                    <input type="checkbox" data-name="Soja Cesar" data-price="10.00">
+                </li>
+                <li>
+                    <span>Garden Salad</span>
+                    <span class="price">$13.00</span>
+                    <img src="Garden Salad.jpeg" alt="Garden Salad">
+                    <input type="checkbox" data-name="Garden Salad" data-price="13.00">
+                </li>
+                <li>
+                    <span>Greek Salad</span>
+                    <span class="price">$6.00</span>
+                    <img src="geek salad.jpeg" alt="Greek Salad">
+                    <input type="checkbox" data-name="Greek Salad" data-price="6.00">
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Dishes Category -->
+        <div class="menu-category" id="MainDishes">
+            <h2>Main Dishes</h2>
+            <ul>
+                <li>
+                    <span>Hummus</span>
+                    <span class="price">$8.00</span>
+                    <img src="humus.jpeg" alt="Hummus">
+                    <input type="checkbox" data-name="Hummus" data-price="8.00">
+                </li>
+                <li>
+                    <span>Paneer Wraps</span>
+                    <span class="price">$15.00</span>
+                    <img src="wrap.jpg" alt="Paneer Wraps">
+                    <input type="checkbox" data-name="Paneer Wraps" data-price="15.00">
+                </li>
+                <li>
+                    <span>Tofu Stir-fry</span>
+                    <span class="price">$10.00</span>
+                    <img src="tola stir fry.jpeg" alt="Tofu Stir-fry">
+                    <input type="checkbox" data-name="Tofu Stir-fry" data-price="10.00">
+                </li>
+            </ul>
+        </div>
+
+        <!-- Drinks Category -->
+        <div class="menu-category" id="Drinks">
+            <h2>Drinks</h2>
+            <ul>
+                <li>
+                    <span>Smoothie</span>
+                    <span class="price">$5.00</span>
+                    <img src="Smoothie.jpeg" alt="Smoothie">
+                    <input type="checkbox" data-name="Smoothie" data-price="5.00">
+                </li>
+                <li>
+                    <span>Fruit Juice</span>
+                    <span class="price">$3.00</span>
+                    <img src="Fruitimage.jpeg" alt="Fruit Juice">
+                    <input type="checkbox" data-name="Fruit Juice" data-price="3.00">
+                </li>
+                <li>
+                    <span>Herbal Tea</span>
+                    <span class="price">$2.00</span>
+                    <img src="herbeltea.jpeg" alt="Herbal Tea">
+                    <input type="checkbox" data-name="Herbal Tea" data-price="2.00">
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <h2>Your Order Summary</h2>
+    <div class="order-summary" id="order-summary">
+        <!-- Order summary will be updated dynamically -->
+    </div>
+
+    <div class="total-price" id="total-price">Total: $0.00</div>
+
+    <button id="order-now">Order Now</button>
+</section>
+
+<script>
+    // Initialize cart and total
+    const cart = [];
+    let total = 0;
+
+    // Select menu items dynamically
+    document.querySelectorAll('.menu-category input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            const { name, price } = e.target.dataset;
+            const itemPrice = parseFloat(price);
+            if (e.target.checked) {
+                cart.push({ name, price: itemPrice });
+                total += itemPrice;
+            } else {
+                const index = cart.findIndex(item => item.name === name);
+                if (index !== -1) {
+                    cart.splice(index, 1);
+                    total -= itemPrice;
+                }
+            }
+            updateOrderSummary();
+        });
+    });
+
+    // Function to update order summary
+    function updateOrderSummary() {
+        const orderSummary = document.getElementById('order-summary');
+        orderSummary.innerHTML = cart.map(item => `${item.name} - $${item.price.toFixed(2)}`).join('<br>');
+
+        document.getElementById('total-price').textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    // Order Now button functionality
+    document.getElementById('order-now').addEventListener('click', () => {
+        if (cart.length > 0) {
+            // Redirect to payment page with cart data as query parameters
+            const orderDetails = cart.map(item => `${encodeURIComponent(item.name)}=${encodeURIComponent(item.price)}`).join('&');
+            window.location.href = `payment.html?total=${total.toFixed(2)}&${orderDetails}`;
+        } else {
+            alert("Please select items to order!");
+        }
+    });
+</script>
+
+</body>
+</html>

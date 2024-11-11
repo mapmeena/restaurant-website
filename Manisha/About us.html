@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Food Haven</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('backgroundimage.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+            background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+        }
+
+        /* Header Styling */
+        header {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff6f61, #ffb347);
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .logo img {
+            width: 120px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation Styling */
+        nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            margin: 0 15px;
+            font-size: 1.2em;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content Box Styling */
+        .content-box {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-box h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #2980b9;
+        }
+
+        .content-box p {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Team Member Section */
+        .team-member {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member img:hover {
+            transform: scale(1.1);
+        }
+
+        .team-member h3 {
+            font-size: 1.3em;
+            color: #2c3e50;
+        }
+
+        .team-member p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Footer Styling */
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- Replace with your restaurant logo -->
+            <img src="OIP.jpeg" alt="Restaurant Logo">
+        </div>
+    </header>
+
+    <!-- Navigation Links -->
+    <nav>
+        <a href="#about-us">About Us</a>
+        <a href="#our-story">Our Story</a>
+        <a href="#our-team">Our Team</a>
+    </nav>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="content-box">
+        <h2>About Us</h2>
+        <p>Welcome to <strong>Food Haven</strong>, where we believe in serving delicious and memorable meals made from the finest, locally sourced ingredients. Our goal is to offer an exceptional dining experience in a cozy and inviting atmosphere.</p>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="our-story" class="content-box">
+        <h2>Our Story</h2>
+        <p>Founded in 2010, Food Haven began as a small family-owned bistro. Over the years, we’ve grown into a beloved dining destination, offering a wide variety of dishes that reflect our passion for food and hospitality. We strive to provide meals that satisfy both the body and soul, making every meal an experience to remember.</p>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="our-team" class="content-box">
+        <h2>Our Team</h2>
+
+        <div class="team-member">
+            <!-- Replace with your chef's image -->
+            <img src="chef2.jpg" alt="Chef Emma">
+            <div>
+                <h3>Chef Emma Johnson</h3>
+                <p>Chef</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <!-- Replace with your manager's image -->
+            <img src="Manager.jpeg" alt="Manager Mike">
+            <div>
+                <h3>Mike Thompson</h3>
+                <p>Manager</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <!-- Replace with your sommelier's image -->
+            <img src="chef1.jpeg" alt="Faizan">
+            <div>
+                <h3>Sarah Lee</h3>
+                <p>Sommelier</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Food Haven. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
